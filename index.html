@@ -3,44 +3,26 @@
    <head>
    <style>
    .typewriter h3 {
-     // set up text to print, each item in array is new line
-var aText = new Array(
-"There are only 10 types of people in the world:", 
-"Those who understand binary, and those who don't"
-);
-var iSpeed = 100; // time delay of print out
-var iIndex = 0; // start printing array at this posision
-var iArrLength = aText[0].length; // the length of the text array
-var iScrollAt = 20; // start scrolling up at this many lines
- 
-var iTextPos = 0; // initialise text position
-var sContents = ''; // initialise contents variable
-var iRow; // initialise current row
- 
-function typewriter()
-{
- sContents =  ' ';
- iRow = Math.max(0, iIndex-iScrollAt);
- var destination = document.getElementById("typedtext");
- 
- while ( iRow < iIndex ) {
-  sContents += aText[iRow++] + '<br />';
- }
- destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
- if ( iTextPos++ == iArrLength ) {
-  iTextPos = 0;
-  iIndex++;
-  if ( iIndex != aText.length ) {
-   iArrLength = aText[iIndex].length;
-   setTimeout("typewriter()", 500);
-  }
- } else {
-  setTimeout("typewriter()", iSpeed);
- }
-}
+     overflow: hidden; /* Ensures the content is not revealed until the animation */
+     border-right: .1em solid black; /* The typwriter cursor */
+     white-space: nowrap; /* Keeps the content on a single line */
+     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+     letter-spacing: 0; /* Adjust as needed */
+     animation:
+       typing 6s steps(40, end),
+       blink-caret .75s step-end infinite;
+   }
 
+   /* The typing effect */
+   @keyframes typing {
+     from { width: 0 }
+     to { width: 100% }
+   }
 
-typewriter();
+   /* The typewriter cursor effect */
+   @keyframes blink-caret {
+     from, to { border-color: transparent }
+     50% { border-color: #F8f8ff; }
    }
 </style>
    </head>
@@ -61,7 +43,5 @@ typewriter();
 AI can fulfill its own true potential by perpetually learning and transforming vernacular knowledge to redefine regional urban formations. </h3>
 
  </div>
-
-<div id="typedtext"></div>
 
 </html>
